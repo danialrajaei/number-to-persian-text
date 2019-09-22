@@ -1,0 +1,29 @@
+{
+  "name": "persian-number-to-text",
+  "version": "1.0.0",
+  "description": "convert number(s) to persian(farsi) text.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielrajaei/number-to-persian-text.git"
+  },
+  "keywords": [
+    "number",
+    "persian",
+    "farsi",
+    "text",
+    "string",
+    "numberToString",
+    "numberToText",
+    "writtenNumber"
+  ],
+  "author": "Daniel Rajaei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielrajaei/number-to-persian-text/issues"
+  },
+  "homepage": "https://github.com/danielrajaei/number-to-persian-text#readme"
+}
