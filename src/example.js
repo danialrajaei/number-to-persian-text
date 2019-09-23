@@ -1,10 +1,6 @@
 const persianNToText = require('./index');
 
-//console.log(persianNToText.convert('1'));
-
-
-function sum(a,b){
-    return a+b;
-}
-
-console.log(sum(5,11));
+console.log(persianNToText.getText('1'));
+console.log(persianNToText.getText('a1'));
+console.log(persianNToText.getText('1366'));
+console.log(persianNToText.getText('سال 2019 میلادی و 1398 شمسی'));
