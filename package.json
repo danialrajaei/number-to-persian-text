@@ -2,7 +2,7 @@
   "name": "number-to-persian-text",
   "version": "1.0.0",
   "description": "convert number(s) to persian(farsi) text.",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "jest"
   },
