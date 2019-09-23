@@ -1,5 +1,5 @@
 {
-  "name": "persian-number-to-text",
+  "name": "number-to-persian-text",
   "version": "1.0.0",
   "description": "convert number(s) to persian(farsi) text.",
   "main": "index.js",
