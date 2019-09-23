@@ -4,7 +4,7 @@ Change number (from number or string)  to Persian (Farsi) text.
 e.g. 1366 => هزار و سیصد و شصت و شش
 
 
-#How to use
+## How to use
 ### simple usage :
 ```javascript
 const persianNToText = require('number-to-persian-text');
@@ -26,7 +26,7 @@ default config object :
 	moneyOutput : weather the output should contain money unit
 	moneyUnit : custom money unit
 	
-###change config object
+### Change config object
 
 to change config object call "changeConfig":
 ```javascript
