@@ -4,7 +4,7 @@ module.exports = numberToPersianText = (function () {
     const twoDigits = ['بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود'];
     const threeDigits = ['صد', 'دویست', 'سیصد', 'چهارصد', 'پانصد', 'ششصد', 'هفتصد', 'هشتصد'];
     const groupNames = ['', 'هزار', 'میلیون', 'میلیارد', 'بیلیون', 'بیلیارد', 'تریلیون', 'تریلیارد'];
-    
+
     var config = {
         inputValidation: false,
         moneyOutput: false,
@@ -16,7 +16,7 @@ module.exports = numberToPersianText = (function () {
     }
 
     function _fetchNumberFromInput(inpt) {
-        return inpt.match(/[+,-]{0,}\d+/g);
+        return inpt.replace(',','').match(/[+,-]{0,}\d+[.]{0,}\d{1,}[%,\b\s%\b]{0,}/g);
     }
 
     function _oneDigitString(num) {
@@ -46,8 +46,12 @@ module.exports = numberToPersianText = (function () {
         }
     }
 
+    function _splitPhoneNumber(val) {
+        return val.replace(/^[+]/, '').split(/[\s-]/);
+    }
+
     function _convertNumberFromInput(inpt) {
-        var retText = (inpt[0] && inpt[0] == '-') ? 'منفی' : '';
+        var retText = (inpt[0] && inpt[0] == '-') ? 'منفی ' : '';
         const splits = inpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").split(',');
         for (let index = 0; index < splits.length; index++) {
             var num = splits[index].padStart(3, '0');
