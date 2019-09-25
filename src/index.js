@@ -1,4 +1,10 @@
 module.exports = numberToPersianText = (function () {
+    const oneDigit = ['صفر', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
+    const tenToTwenty = ['ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هیجده', 'نوزده'];
+    const twoDigits = ['بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود'];
+    const threeDigits = ['صد', 'دویست', 'سیصد', 'چهارصد', 'پانصد', 'ششصد', 'هفتصد', 'هشتصد'];
+    const groupNames = ['', 'هزار', 'میلیون', 'میلیارد', 'بیلیون', 'بیلیارد', 'تریلیون', 'تریلیارد'];
+    
     var config = {
         inputValidation: false,
         moneyOutput: false,
@@ -14,20 +20,17 @@ module.exports = numberToPersianText = (function () {
     }
 
     function _oneDigitString(num) {
-        const texts = ['صفر', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
-        return texts[parseInt(num)];
+        return oneDigit[parseInt(num)];
     }
 
     function _twoDigitToString(num) {
         if (num[0] == '0') {
             return _oneDigitString(num[1]);
         } else if (num[0] == '1') {
-            const texts = ['ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هیجده', 'نوزده'];
-            return texts[parseInt(num[1])];
+            return tenToTwenty[parseInt(num[1])];
         }
         else {
-            const retText = ['بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود'];
-            return num[1] == '0' ? retText[num[0] - 2] : retText[num[0] - 2] + ' و ' + _oneDigitString(num[1]);
+            return num[1] == '0' ? twoDigits[num[0] - 2] : twoDigits[num[0] - 2] + ' و ' + _oneDigitString(num[1]);
         }
     }
 
@@ -39,14 +42,12 @@ module.exports = numberToPersianText = (function () {
             return _twoDigitToString(num.substring(1, 3));
         }
         else {
-            const retText = ['صد', 'دویست', 'سیصد', 'چهارصد', 'پانصد', 'ششصد', 'هفتصد', 'هشتصد'];
-            return num.substring(1, 3) == '00' ? retText[num[0] - 1] : retText[num[0] - 1] + ' و ' + _twoDigitToString(num.substring(1, 3));
+            return num.substring(1, 3) == '00' ? threeDigits[num[0] - 1] : threeDigits[num[0] - 1] + ' و ' + _twoDigitToString(num.substring(1, 3));
         }
     }
 
     function _convertNumberFromInput(inpt) {
-        var retText = '';
-        const groupNames = ['', 'هزار', 'میلیون', 'میلیارد', 'بیلیون', 'بیلیارد', 'تریلیون', 'تریلیارد'];
+        var retText = (inpt[0] && inpt[0] == '-') ? 'منفی' : '';
         const splits = inpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").split(',');
         for (let index = 0; index < splits.length; index++) {
             var num = splits[index].padStart(3, '0');

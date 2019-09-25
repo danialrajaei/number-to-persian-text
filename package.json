@@ -4,7 +4,9 @@
   "description": "convert number(s) to persian(farsi) text.",
   "main": "./src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "gulp js",
+    "watch":"gulp"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,9 @@
   },
   "homepage": "https://github.com/danielrajaei/number-to-persian-text#readme",
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-jsmin": "^0.1.5",
+    "gulp-rename": "^1.4.0",
     "jest": "^24.9.0"
   }
 }
