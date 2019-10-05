@@ -1,4 +1,4 @@
-const persianNToText = require('./index');
+const persianNToText = require('../index');
 
 console.log(persianNToText.getText('1'));
 console.log(persianNToText.getText('a1'));
