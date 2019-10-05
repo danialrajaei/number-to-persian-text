@@ -16,7 +16,7 @@ module.exports = numberToPersianText = (function () {
     }
 
     function _fetchNumberFromInput(inpt) {
-        return inpt.replace(',','').match(/[+,-]{0,}\d+[.]{0,}\d{1,}[%,\b\s%\b]{0,}/g);
+        return inpt.replace(',', '').match(/[+,-]{0,}\d+[.]{0,}\d{1,}[%,\b\s%\b]{0,}/g);
     }
 
     function _oneDigitString(num) {
@@ -50,9 +50,9 @@ module.exports = numberToPersianText = (function () {
         return val.replace(/^[+]/, '').split(/[\s-]/);
     }
 
-    function _convertNumberFromInput(inpt) {
-        var retText = (inpt[0] && inpt[0] == '-') ? 'منفی ' : '';
-        const splits = inpt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").split(',');
+    function _convertNumberToText(fixedNumber) {
+        const splits = fixedNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").split(',');
+        var retText = '';
         for (let index = 0; index < splits.length; index++) {
             var num = splits[index].padStart(3, '0');
             if (num === '000')
@@ -60,6 +60,53 @@ module.exports = numberToPersianText = (function () {
             retText += [_threeDigitToString(num), groupNames[splits.length - 1 - index], 'و'].join(' ');
         }
         return retText.replace(/( و)$/g, '').trim();
+    }
+
+    function _getFractionLabel(fractionLength) {
+        var retVal = '';
+        switch (fractionLength) {
+            case 1:
+                retVal = 'دهم';
+                break;
+            case 2:
+                retVal = 'صدم';
+                break;
+            case 3:
+                retVal = 'هزارم';
+                break;
+            case 4:
+                retVal = 'ده هزارم';
+                break;
+            case 5:
+                retVal = 'صد هزارم';
+                break;
+
+            default:
+                break;
+        }
+        return retVal;
+    }
+
+    function _convertNumberFromInput(input) {
+        var retText = (input[0] && input[0] == '-') ? 'منفی ' : '';
+        var postFix = '', fixedNumber = '', fraction = '';
+        if (input.match(/[%,\b\s%\b]$/)) {
+            postFix = ' درصد';
+            fixedNumber = input.replace(/[%,\b\s%\b]$/, '');
+        }
+        if (fixedNumber.indexOf('.') > -1) {
+            [fixedNumber, floatNumber] = fixedNumber.split('.')[0];
+            if (floatNumber[0] == '0' && floatNumber.length > 5) {
+                var numberOfZeros = 0;
+                while (floatNumber[numberOfZeros] == '0') {
+                    numberOfZeros++
+                }
+                fraction = ['ممیز', _convertNumberToText(numberOfZeros.toString()), _convertNumberToText('0'), _convertNumberToText(floatNumber)].join(' ');
+            }
+            else { fraction = ['ممیز', _convertNumberToText(floatNumber), _getFractionLabel(floatNumber.length)].join(' '); }
+        }
+        retText += _convertNumberToText(fixedNumber);
+        return [retText, fraction, postFix].join(' ');
     }
 
     return {
