@@ -5,8 +5,8 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "jest",
-    "build": "gulp js",
-    "watch":"gulp"
+    "build": "gulp",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -33,5 +33,8 @@
     "gulp-jsmin": "^0.1.5",
     "gulp-rename": "^1.4.0",
     "jest": "^24.9.0"
+  },
+  "dependencies": {
+    "gulp-umd": "^2.0.0"
   }
 }
