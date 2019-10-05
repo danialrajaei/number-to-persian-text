@@ -1,9 +1,18 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <script src="../dist/index.min.js"></script>
-    </head>
-    <body>
-        <input value="">
-        <div id="convertedText"></div>
-    </body>
+
+<head>
+    <script src="../dist/index.js"></script>
+</head>
+
+<body>
+    <input id="inputValue" value="">
+    <div id="convertedText"></div>
+    <script type="text/javascript" charset="UTF-8">
+        document.getElementById('inputValue').addEventListener('input', function (evt) {
+            document.getElementById('convertedText').innerHTML = NumberToPersianText.getText(evt.target.value);
+        });
+    </script>
+</body>
+
 </html>

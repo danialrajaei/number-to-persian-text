@@ -1,11 +1,12 @@
 const { src, dest, watch } = require('gulp');
 var jsmin = require('gulp-jsmin');
 var rename = require('gulp-rename');
-var umd = require('gulp-umd');
+var header = require('gulp-header');
 
 function js() {
     return src('./src/index.js', { sourcemaps: false })
-        .pipe(umd())
+        .pipe(header('\ufeff'))
+        .pipe(dest('dist/', { sourcemaps: true }))
         .pipe(jsmin())
         .pipe(rename({ suffix: '.min' }))
         .pipe(dest('dist/', { sourcemaps: false }))
