@@ -5,12 +5,26 @@ e.g. 1366 => هزار و سیصد و شصت و شش
 
 
 ## How to use
-### simple usage :
+### usage 1:
 ```javascript
 const persianNToText = require('number-to-persian-text');
 
 persianNToText.getText('سال 2019 میلادی و 1398 شمسی'); // سال دو هزار و نوزده میلادی و یک هزار و سیصد ونود وهشت شمسی
+persianNToText.getText('-23.34%'); //منفی بیست و سه ممیز سی و چهار صدم درصد
 ```
+### usage 2:    
+ see the example in \example\index.html
+
+    <html>
+        <head>
+            <script src="../dist/index.js"></script>
+        </head>
+        <body>
+            <div id="convertedText"></div>
+            <script type="text/javascript" charset="UTF-8">
+                 document.getElementById('convertedText').innerHTML = NumberToPersianText.getText('1234');
+            </script>
+        </body>
 ### configuration
 
 default config object :
