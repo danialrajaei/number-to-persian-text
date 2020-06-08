@@ -1,8 +1,14 @@
+
 # Number to persian text
 Change number (from number or string)  to Persian (Farsi) text.
 
 e.g. 1366 => هزار و سیصد و شصت و شش
 
+## How to install
+
+`npm i number-to-persian-text`
+    or
+`yarn add number-to-persian-text`
 
 ## How to use
 ### usage 1:
