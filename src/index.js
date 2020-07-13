@@ -4,7 +4,7 @@
         const oneDigit = ['صفر', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه'];
         const tenToTwenty = ['ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هیجده', 'نوزده'];
         const twoDigits = ['بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود'];
-        const threeDigits = ['صد', 'دویست', 'سیصد', 'چهارصد', 'پانصد', 'ششصد', 'هفتصد', 'هشتصد'];
+        const threeDigits = ['صد', 'دویست', 'سیصد', 'چهارصد', 'پانصد', 'ششصد', 'هفتصد', 'هشتصد', 'نهصد'];
         const groupNames = ['', 'هزار', 'میلیون', 'میلیارد', 'بیلیون', 'بیلیارد', 'تریلیون', 'تریلیارد'];
 
         var config = {
@@ -59,7 +59,7 @@
                 var num = splits[index].padStart(3, '0');
                 if (num === '000')
                     continue;
-                retText += [_threeDigitToString(num), groupNames[splits.length - 1 - index], 'و'].join(' ');
+                retText += [_threeDigitToString(num), groupNames[splits.length - 1 - index], 'و '].join(' ');
             }
             return retText.replace(/( و)$/g, '').trim();
         }
