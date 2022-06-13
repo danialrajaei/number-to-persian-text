@@ -1,6 +1,6 @@
 {
   "name": "number-to-persian-text",
-  "version": "1.1.0np",
+  "version": "1.1.0",
   "description": "convert number(s) to persian(farsi) text.",
   "main": "./src/index.js",
   "scripts": {
