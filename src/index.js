@@ -61,7 +61,7 @@
                     continue;
                 retText += [_threeDigitToString(num), groupNames[splits.length - 1 - index], 'و '].join(' ');
             }
-            return retText.replace(/( و)$/g, '').trim();
+            return retText.replace(/( و )$/g, '').trim();
         }
 
         function _getFractionLabel(fractionLength) {
