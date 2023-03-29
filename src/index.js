@@ -97,7 +97,7 @@
             }
             var postFix = '', fraction = '';
             if (input.match(/[%,\b\s%\b]$/)) {
-                postFix = ' درصد';
+                postFix = 'درصد';
                 fixedNumber = fixedNumber.replace(/[%,\b\s%\b]$/, '');
             }
             if (fixedNumber.indexOf('.') > -1) {
